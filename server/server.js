@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 const connectDB = require("./config/db");
 connectDB();
 
@@ -41,6 +42,10 @@ app.get(
 const assetRoutes = require("./routes/assetRoutes");
 
 app.use("/api/assets", assetRoutes);
+
+const bookingRoutes = require("./routes/bookingRoutes");
+
+app.use("/api/bookings", bookingRoutes);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
