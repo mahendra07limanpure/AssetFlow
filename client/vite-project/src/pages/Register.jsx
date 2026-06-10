@@ -39,83 +39,101 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
-        <p className="text-gray-600 mb-8">Join AssetFlow Platform</p>
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background ambient glow */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="backdrop-blur-xl bg-slate-900/40 border border-slate-800/80 rounded-3xl shadow-2xl shadow-slate-950/50 w-full max-w-md p-10 relative z-10">
+        <div className="flex items-center gap-3 mb-8 justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+            <svg className="w-7 h-7 text-slate-950 font-bold" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <div className="text-left">
+            <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">
+              AssetFlow
+            </h1>
+            <p className="text-xs text-slate-400 font-medium">Smart Resource Ecosystem</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            <div className="bg-rose-950/50 border border-rose-800/80 text-rose-300 px-4 py-3 rounded-xl text-sm font-medium">
               {error}
             </div>
           )}
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
+            <label className="block text-slate-300 text-sm font-semibold mb-2">Full Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-200"
+              placeholder="John Doe"
               required
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Email</label>
+            <label className="block text-slate-300 text-sm font-semibold mb-2">Email Address</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-200"
+              placeholder="name@organization.com"
               required
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Password</label>
+            <label className="block text-slate-300 text-sm font-semibold mb-2">Password</label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-200"
+              placeholder="••••••••"
               required
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Role</label>
+            <label className="block text-slate-300 text-sm font-semibold mb-2">Account Role</label>
             <select
               name="role"
               value={formData.role}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-200"
             >
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
+              <option value="user" className="bg-slate-900 text-slate-100">User (Borrower)</option>
+              <option value="admin" className="bg-slate-900 text-slate-100">Administrator</option>
             </select>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 transition"
+            className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-600 hover:to-emerald-600 text-slate-950 py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-98 disabled:opacity-50 disabled:pointer-events-none shadow-lg shadow-cyan-500/15"
           >
-            {loading ? "Registering..." : "Register"}
+            {loading ? "Creating account..." : "Register"}
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-6">
+        <p className="text-center text-slate-400 text-sm mt-8">
           Already have an account?{" "}
           <button
             onClick={() => navigate("/login")}
-            className="text-blue-600 font-semibold hover:underline"
+            className="text-cyan-400 font-bold hover:text-cyan-300 hover:underline transition-colors"
           >
-            Login
+            Sign In
           </button>
         </p>
       </div>

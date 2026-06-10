@@ -9,9 +9,31 @@ import "./App.css";
 
 function App() {
   return (
-   <div>
-      <h1>AssetFlow Working</h1>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute requiredRole="user">
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

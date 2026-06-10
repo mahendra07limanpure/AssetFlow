@@ -66,6 +66,26 @@ export const searchAssets = (query) => {
   return apiCall(`/assets/search?q=${query}`);
 };
 
+export const createAsset = (assetData) => {
+  return apiCall("/assets", {
+    method: "POST",
+    body: JSON.stringify(assetData),
+  });
+};
+
+export const updateAsset = (id, assetData) => {
+  return apiCall(`/assets/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(assetData),
+  });
+};
+
+export const deleteAsset = (id) => {
+  return apiCall(`/assets/${id}`, {
+    method: "DELETE",
+  });
+};
+
 // Booking APIs
 export const createBooking = (data) => {
   return apiCall("/bookings", {
