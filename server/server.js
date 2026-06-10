@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
+
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
@@ -36,6 +37,10 @@ app.get(
     });
   }
 );
+
+const assetRoutes = require("./routes/assetRoutes");
+
+app.use("/api/assets", assetRoutes);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
