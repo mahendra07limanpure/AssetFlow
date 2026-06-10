@@ -47,6 +47,10 @@ const bookingRoutes = require("./routes/bookingRoutes");
 
 app.use("/api/bookings", bookingRoutes);
 
+const dashboardRoutes = require("./routes/dashboardRoutes");
+
+app.use("/api/dashboard", dashboardRoutes);
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
