@@ -16,6 +16,26 @@ app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
   res.send("AssetFlow API Running");
 });
+const protect = require("./middleware/authMiddleware");
+const adminOnly = require("./middleware/adminMiddleware");
+
+app.get("/api/profile", protect, (req, res) => {
+  res.json({
+    success: true,
+    user: req.user,
+  });
+});
+app.get(
+  "/api/admin-test",
+  protect,
+  adminOnly,
+  (req, res) => {
+    res.json({
+      success: true,
+      message: "Welcome Admin",
+    });
+  }
+);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
