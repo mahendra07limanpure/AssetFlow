@@ -113,7 +113,7 @@ const deleteAsset = async (req, res) => {
 module.exports = {
   createAsset,
   getAllAssets,
-   getAssetById,
-   updateAsset, deleteAsset,
-   
+  getAssetById,
+  updateAsset,
+  deleteAsset,
 };

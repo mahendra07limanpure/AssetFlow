@@ -34,16 +34,21 @@ const createBooking = async (req, res) => {
 };
 
 const getAllBookings = async (req, res) => {
-  console.log("getAllBookings called");
+  try {
+    const bookings = await Booking.find()
+      .populate("user", "name email")
+      .populate("asset", "assetName");
 
-  const bookings = await Booking.find()
-    .populate("user", "name email")
-    .populate("asset", "assetName");
-
-  res.json({
-    success: true,
-    bookings,
-  });
+    res.json({
+      success: true,
+      bookings,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 const approveBooking = async (req, res) => {

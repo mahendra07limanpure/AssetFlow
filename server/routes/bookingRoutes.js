@@ -1,5 +1,4 @@
 const express = require("express");
-console.log("Booking Routes Loaded");
 
 const router = express.Router();
 
