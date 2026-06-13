@@ -3,6 +3,7 @@
 ## 📋 Project Overview
 **AssetFlow** is a modern, full-stack asset management and resource allocation platform designed to streamline inventory tracking, booking workflows, and operational analytics. It is specifically built to solve resource-sharing bottlenecks in organizations, universities, and teams by offering a centralized dashboard for users to browse and request bookings, and for administrators to manage inventory, approve or reject requests, track issue/return lifecycles, and monitor asset utilization analytics.
 
+##Video link : https://drive.google.com/file/d/1Vo9KjKwv13g3ON2cmbyaMnAlsu3BTy92/view?usp=sharing
 ---
 
 ## 🛠️ Technology Stack
